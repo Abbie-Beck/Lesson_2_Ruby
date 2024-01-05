@@ -1,6 +1,6 @@
 require 'yaml'
 MESSAGES = YAML.load_file('calculator_messages.yml')
-LANGUAGE = 'en'
+LANGUAGE = 'es'
 
 def messages(message, lang=LANGUAGE)
   MESSAGES[lang][message]
@@ -90,7 +90,6 @@ loop do
   prompt(messages('second_number'))
   number2 = get_nums
   system 'clear'
-  prompt format(messages('display_nums'), num1: number1, num2: number2)
   operator = get_op
 
   prompt format(messages('op_message'), operation: op_to_message(operator))
