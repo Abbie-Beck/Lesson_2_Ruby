@@ -6,6 +6,7 @@ en:
   first_number: "What's the first number?"
   second_number: "What's the second number?"
   invalid_number: "Hmm...that doesn't look like a valid number."
+  display_nums: "Your numbers are %{num1} and %{num2}"
   operator_prompt: |
     What operation would you like to perform?
     1) add
@@ -13,6 +14,10 @@ en:
     3) multiply
     4) divide
   valid_operator: 'Must choose 1, 2, 3 or 4'
+  adding: "Adding"
+  subtracting: "Subtracting"
+  multiplying: "Multiplying"
+  dividing: "Dividing"
   op_message: "%{operation} the two numbers"
   no_zero_division: "Oops, no dividing by zero here!"
   result: "The result of your operation is: %{result}"
@@ -27,6 +32,7 @@ es:
   first_number: "¿Cuál es el primer número?"
   second_number: "¿Cuál es el segundo número?"
   invalid_number: "Hmm... ese no parece un número válido."
+  display_nums: "Tus numeros son %{num1} y %{num2}"
   operator_prompt: |
     ¿Qué operación te gustaría realizar?
     1) agregar
@@ -34,8 +40,12 @@ es:
     3) multiplicar
     4) dividir
   valid_operator: 'Debe elegir 1, 2, 3 o 4'
+  adding: "Agregando"
+  subtracting: "Restando"
+  multiplying: "Multiplicando"
+  dividing: "Divisorio"
   op_message: "%{operation} los dos numeros."
   no_zero_division: '¡No, aquí no se permite la división por cero!'
   result: "El resultado de su operación es: %{result}"
-  calculate_again?: "¿Quieres realizar otro cálculo? (Y para calcular nuevamente)"
+  calculate_again?: "¿Quieres realizar otro cálculo? (S para calcular nuevamente)"
   goodbye: "Gracias por usar la calculadora hoy. Adiós, %{name}!"

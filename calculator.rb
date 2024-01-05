@@ -14,6 +14,28 @@ def valid_number?(num)
   (num.to_i.to_s == num) || (num.to_f.to_s == num)
 end
 
+def get_name
+  loop do
+    prompt(messages('welcome'))
+    user_name = gets.chomp.capitalize
+
+    return user_name unless user_name.strip.empty?
+    prompt(messages('valid_name'))
+  end
+  user_name
+end
+
+def get_op
+  loop do
+    prompt(messages('operator_prompt'))
+    operator = gets.chomp
+
+    return operator if %w(1 2 3 4).include?(operator)
+    prompt(messages('valid_operator'))
+  end
+  operator
+end
+
 def get_nums
   loop do
     prompt(messages('get_valid_num'))
@@ -31,26 +53,32 @@ end
 def op_to_message(op)
   case op
   when '1'
-    return 'Adding'
+    return (messages('adding'))
   when '2'
-    return 'Subtracting'
+    return (messages('subtracting'))
   when '3'
-    return "Multiplying"
+    return (messages('multiplying'))
   when '4'
-    return "Dividing"
+    return (messages('dividing'))
   end
   op
 end
 
-prompt(messages('welcome'))
-
-user_name = ''
-loop do
-  user_name = gets.chomp.capitalize
-
-  break unless user_name.strip.empty?
-  prompt(messages('valid_name'))
+def result(operator, number1, number2)
+  case operator
+  when '1'
+    return number1.to_f + number2.to_f
+  when '2'
+    return number1.to_f - number2.to_f
+  when '3'
+    return number1.to_f * number2.to_f
+  when '4'
+    return number1.to_f / number2.to_f
+  end
+  operator
 end
+
+user_name = get_name
 system 'clear'
 
 prompt format(messages('hello_name'), name: user_name)
@@ -61,32 +89,13 @@ loop do
 
   prompt(messages('second_number'))
   number2 = get_nums
-
-  operator = ''
-  loop do
-    prompt(messages('operator_prompt'))
-
-    operator = gets.chomp
-
-    break if %w(1 2 3 4).include?(operator)
-    prompt(messages('valid_operator'))
-  end
   system 'clear'
+  prompt format(messages('display_nums'), num1: number1, num2: number2)
+  operator = get_op
 
   prompt format(messages('op_message'), operation: op_to_message(operator))
-
-  result = case operator
-           when '1'
-             number1.to_i + number2.to_i
-           when '2'
-             number1.to_i - number2.to_i
-           when '3'
-             number1.to_i * number2.to_i
-           when '4'
-             number1.to_f / number2.to_f
-           end
-
-  user_result = result
+  system 'clear'
+  user_result = result(operator, number1, number2)
   if no_zero_div?(number2, operator)
     prompt(messages('no_zero_division'))
   else
@@ -95,7 +104,8 @@ loop do
 
   prompt(messages('calculate_again?'))
   answer = gets.chomp
-  break unless answer.downcase.start_with?('y')
+  system 'clear'
+  break unless answer.downcase.start_with?('y', 's')
 end
 
 system 'clear'
