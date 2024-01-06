@@ -6,7 +6,6 @@ en:
   first_number: "What's the first number?"
   second_number: "What's the second number?"
   invalid_number: "Hmm...that doesn't look like a valid number."
-  display_nums: "Your numbers are %{num1} and %{num2}"
   operator_prompt: |
     What operation would you like to perform?
     1) add
@@ -32,7 +31,6 @@ es:
   first_number: "¿Cuál es el primer número?"
   second_number: "¿Cuál es el segundo número?"
   invalid_number: "Hmm... ese no parece un número válido."
-  display_nums: "Tus numeros son %{num1} y %{num2}"
   operator_prompt: |
     ¿Qué operación te gustaría realizar?
     1) agregar
