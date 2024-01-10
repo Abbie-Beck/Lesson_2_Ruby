@@ -47,7 +47,7 @@ def get_interest_rate
     int_rate = gets.chomp
 
     return int_rate unless (int_rate.strip.empty?) ||
-                           (int_rate.to_f < 0) ||
+                           (int_rate.to_f <= 0) ||
                            (valid_num?(int_rate) == false)
     prompt(messages('valid_number'))
   end
