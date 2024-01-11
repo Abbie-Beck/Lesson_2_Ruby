@@ -1,6 +1,6 @@
 require 'yaml'
 MESSAGES = YAML.load_file('loan_calc_messages.yml')
-LANGUAGE = 'en' # option for 'es'
+LANGUAGE = 'es' # option for 'es'
 MONTHS = 12
 
 def messages(message, lang=LANGUAGE)
@@ -118,4 +118,5 @@ loop do
   break unless calc_again?
 end
 
+system 'clear'
 prompt format(messages('goodbye'), name: user_name)
