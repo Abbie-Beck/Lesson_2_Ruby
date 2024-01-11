@@ -1,6 +1,6 @@
 require 'yaml'
 MESSAGES = YAML.load_file('loan_calc_messages.yml')
-LANGUAGE = 'es' # option for 'es'
+LANGUAGE = 'en' # option for 'es'
 MONTHS = 12
 
 def messages(message, lang=LANGUAGE)
