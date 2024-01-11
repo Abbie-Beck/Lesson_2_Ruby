@@ -15,6 +15,24 @@ def valid_num?(num)
   (num.to_i.to_s == num) || (num.to_f.to_s == num)
 end
 
+def valid_dollar?(number)
+  (number.strip.empty?) ||
+    (number.to_f <= 0) ||
+    (valid_num?(number) == false)
+end
+
+def valid_percentage?(percent)
+  (percent.strip.empty?) ||
+    (percent.to_f < 0) ||
+    (valid_num?(percent) == false)
+end
+
+def valid_time?(time)
+  (time.strip.empty?) ||
+    (time.to_i <= 0) ||
+    (valid_num?(time) == false)
+end
+
 def get_name
   loop do
     prompt(messages('welcome'))
@@ -32,9 +50,7 @@ def get_amount
     prompt(messages('loan_example'))
     amount = gets.chomp
 
-    return amount unless (amount.strip.empty?) ||
-                         (amount.to_f < 0) ||
-                         (valid_num?(amount) == false)
+    return amount unless valid_dollar?(amount)
     prompt(messages('valid_number'))
   end
   amount
@@ -44,14 +60,12 @@ def get_interest_rate
   loop do
     prompt(messages('get_interest_rate'))
     prompt(messages('interest_example'))
-    int_rate = gets.chomp
+    interest_rate = gets.chomp
 
-    return int_rate unless (int_rate.strip.empty?) ||
-                           (int_rate.to_f <= 0) ||
-                           (valid_num?(int_rate) == false)
+    return interest_rate unless valid_percentage?(interest_rate)
     prompt(messages('valid_number'))
   end
-  int_rate
+  interest_rate
 end
 
 def get_loan_duration
@@ -59,23 +73,31 @@ def get_loan_duration
     prompt(messages('loan_duration_years'))
     years = gets.chomp
 
-    return years unless (years.strip.empty?) ||
-                        (years.to_i <= 0) ||
-                        (valid_num?(years) == false)
+    return years unless valid_time?(years)
     prompt(messages('valid_number'))
   end
   years
 end
 
-def monthly_cost(loan_amount, int_rate, duration_in_years)
-  annual_interest = int_rate.to_f / 100
+def monthly_cost(loan_amount, interest_rate, duration_in_years)
+  annual_interest = interest_rate.to_f / 100
   monthly_interest = annual_interest / MONTHS
-  months = duration_in_years.to_i * MONTHS
+  months = duration_in_years.to_f * MONTHS
 
-  rate = loan_amount.to_f *
-         (monthly_interest /
-         (1 - ((1 + monthly_interest)**(-months))))
-  rate.round(2)
+  if interest_rate == '0'
+    rate = (loan_amount.to_f / months)
+  else
+    rate = loan_amount.to_f *
+           (monthly_interest /
+           (1 - ((1 + monthly_interest)**(-months))))
+  end
+  rate
+end
+
+def calc_again?
+  prompt(messages('calc_again'))
+  answer = gets.chomp
+  answer.downcase.start_with?('y', 's')
 end
 
 user_name = get_name
@@ -87,14 +109,13 @@ loop do
   interest_rate = get_interest_rate
   years = get_loan_duration
   system 'clear'
-  monthly_payment = monthly_cost(amount, interest_rate, years)
-  prompt format(messages('month_pay'), monthly: monthly_payment)
+  monthly_rate = monthly_cost(amount, interest_rate, years)
+  monthly_rate = format("%.2f", monthly_rate)
+  amount = format("%.2f", amount)
+  prompt format(messages('month_pay'), amount: amount, years: years,
+                                       apr: interest_rate, rate: monthly_rate)
 
-  prompt(messages('calc_again'))
-  answer = gets.chomp
-  system 'clear'
-
-  break unless answer.downcase.start_with?('y', 's')
+  break unless calc_again?
 end
 
 prompt format(messages('goodbye'), name: user_name)

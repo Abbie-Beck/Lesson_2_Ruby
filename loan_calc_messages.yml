@@ -8,7 +8,7 @@ en:
   get_interest_rate: "What is the yearly interest rate for your loan?"
   interest_example: "(Example: 5 for 5% or 2.5 for 2.5%)"
   loan_duration_years: "What is the loan duration (in years)?"
-  month_pay: "Your monthly payment is: $%{monthly}"
+  month_pay: "The monthly payment for a loan of $%{amount} over %{years} years with an APR of %{apr} percent is: $%{rate}"
   calc_again: "Would you like to calculate another loan? (Y to calculate again)"
   goodbye: "Thank you for using the loan Calculator. Good bye, %{name}!"
 es:
@@ -21,6 +21,6 @@ es:
   get_interest_rate: "¿Cuál es la tasa de interés anual de su préstamo?"
   interest_example: "Ejemplo: 5 por 5% o 2,5 por 2,5%"
   loan_duration_years: "¿Cuál es la duración del préstamo (en años)?"
-  month_pay: "Su pago mensual es: $%{monthly}"
+  month_pay: "El pago mensual de un préstamo de $%{amount} por una duración de %{years} años con una tasa de interés de %{apr} por ciento es: $%{rate}"
   calc_again: "¿Le gustaría calcular otro préstamo? (S para calcular nuevamente)"
   goodbye: "Gracias por utilizar la Calculadora de préstamos. ¡Adiós, %{name}!"
