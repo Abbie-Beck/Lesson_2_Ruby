@@ -1,0 +1,34 @@
+welcome: "Welcome to the Rock, Paper, Scissors, Lizard, Spock arena! What's your name?"
+valid_name: "Please enter a valid name"
+greeting_name: "Nice to meet you, %{name}!"
+rules: "To win, you must beat the computer 3 times."
+need_rules: "Would you like an explanation of how this game differs from Rock, Paper, Scissors? (y/n)"
+more_time_rules: "Do you need to see the rules again? (y/n)"
+game_explanation: |
+    -lizard poisons spock and eats paper, 
+    but gets crushed by rock and decapitated by scissors
+    -spock smashes scissors and vaporizes rock, 
+    but paper disproves him
+choose_player: |
+    Choose one: 
+        %{choices}
+    You can use the following abbreviations: 
+        rock: r, paper: p, scissors: sc, lizard: l, spock: sp
+valid_choice: "That's not a valid choice."
+player_v_computer: |
+    You chose: %{player}; Computer chose: %{computer}
+      
+player_wins_round: "You beat the computer this round!"
+computer_wins_round: "The computer won, better luck next round."
+tie: "It's a tie!"
+player_wins: |
+    You have defeated the computer!
+      
+computer_wins: |
+    Technology has won, it was inevitable.
+      
+current_score: |
+    Your score is: %{player}; the computer's score is: %{opponent}.
+      
+play_again?: "Would you like a rematch?"
+bye: "Thank you for playing, goodbye %{name}!"
