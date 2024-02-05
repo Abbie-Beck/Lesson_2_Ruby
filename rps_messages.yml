@@ -1,14 +1,19 @@
 welcome: "Welcome to the Rock, Paper, Scissors, Lizard, Spock arena! What's your name?"
 valid_name: "Please enter a valid name"
-greeting_name: "Nice to meet you, %{name}!"
-rules: "To win, you must beat the computer 3 times."
+greeting_name: |
+    Nice to meet you, %{name}!
+      
+rules: |
+    This game will end when either you or the computer wins 3 rounds total.
+      
 need_rules: "Would you like an explanation of how this game differs from Rock, Paper, Scissors? (y/n)"
-more_time_rules: "Do you need to see the rules again? (y/n)"
 game_explanation: |
     -lizard poisons spock and eats paper, 
     but gets crushed by rock and decapitated by scissors
     -spock smashes scissors and vaporizes rock, 
     but paper disproves him
+      
+type_to_exit: "Type: 'y' when you are ready to play!"
 choose_player: |
     Choose one: 
         %{choices}

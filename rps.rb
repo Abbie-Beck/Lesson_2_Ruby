@@ -22,7 +22,7 @@ end
 def get_name
   loop do
     prompt(messages('welcome'))
-    name = gets.chomp.capitalize
+    name = gets.chomp.strip.capitalize
 
     return name unless name.strip.empty?
     prompt(messages('valid_name'))
@@ -31,9 +31,12 @@ def get_name
 end
 
 def game_explainer
-  prompt(messages('game_explanation'))
-  sleep 10
-  system "clear"
+  loop do
+    prompt(messages('game_explanation'))
+    prompt(messages('type_to_exit'))
+    answer = gets.chomp
+    break if answer.downcase.include?('y')
+  end 
 end
 
 def need_rules?
@@ -46,18 +49,11 @@ def need_rules?
 end
 
 def abbreviation_converter(choice)
-  if MOVES['rock'][:abbreviation] == (choice)
-    'rock'
-  elsif MOVES['lizard'][:abbreviation] == (choice)
-    'lizard'
-  elsif MOVES['spock'][:abbreviation] == (choice)
-    'spock'
-  elsif MOVES['paper'][:abbreviation] == (choice)
-    'paper'
-  elsif MOVES['scissors'][:abbreviation] == (choice)
-    'scissors'
-  end
-end
+  MOVES.each do |move, data|
+    return move if data[:abbreviation] == choice
+  end 
+  nil
+end 
 
 def valid_choice(choice)
   MOVES.key?(choice)
