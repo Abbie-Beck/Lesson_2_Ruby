@@ -1,0 +1,8 @@
+get_noun: "Enter a noun: "
+get_verb: "Enter a verb: "
+get_adjective: "Enter an adjective: "
+get_adverb: "Enter an adverb: "
+
+sentence_1: "Did you know that you can %{verb} with your %{adverb} %{noun} to make it %{adjective}?"
+sentence_2: "Do you ever %{verb} a %{adjective} %{adverb} %{noun} in the snow?"
+sentence_3: "The other day I was %{adverb} %{verb}ing my %{noun} when I thought I saw a %{adjective} ghost!"
